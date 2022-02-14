@@ -157,7 +157,8 @@ public class Main {
                                 quanLyDanhSachSanPham.hienThiDanhSachSP();
                                 break;
                             case 3:
-
+                                quanLyDanhSachSanPham.sapXepTheoHanSuDung();
+                                quanLyDanhSachSanPham.hienThiDanhSachSP();
                                 break;
                         }
                     } while (luaChon2 != 0);

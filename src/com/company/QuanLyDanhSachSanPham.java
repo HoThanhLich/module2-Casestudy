@@ -127,4 +127,24 @@ public class QuanLyDanhSachSanPham {
         }
     }
 
+    public long tinhSoNgayConLai(int index) {
+        long ngayHetHan = 365*(danhSachSP.get(index).getHanSD().getNam()-1970) +
+                (danhSachSP.get(index).getHanSD().getThang()*30+danhSachSP.get(index).getHanSD().getNgay());
+        long ngayHienTai = (System.currentTimeMillis()/(3600*1000*24));
+        long soNgayHSD = ngayHetHan - ngayHienTai;
+        return soNgayHSD;
+    }
+
+    public void sapXepTheoHanSuDung() {
+        for (int i = 0; i < danhSachSP.size(); i++) {
+            for (int j = danhSachSP.size()-1; j > i ; j--) {
+                if (tinhSoNgayConLai(j) < tinhSoNgayConLai(j - 1) ) {
+                    SanPham temp = danhSachSP.get(j);
+                    danhSachSP.set(j, danhSachSP.get(j - 1));
+                    danhSachSP.set(j - 1, temp);
+                }
+            }
+        }
+    }
+
 }
