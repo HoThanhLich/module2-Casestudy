@@ -141,19 +141,23 @@ public class Main {
                     break;
                 case 5:
                     do {
-                        System.out.println("---Cách thống kê---");
-                        System.out.println("1. Theo hạn sử dụng");
+                        System.out.println("---Cách thực hiện---");
+                        System.out.println("1. Theo Giá");
                         System.out.println("2. Theo số lượng");
-                        System.out.println("3. Theo giá");
+                        System.out.println("3. Theo HSD");
                         System.out.println("0. Quay lại");
                         luaChon2 = scanner.nextInt();
                         switch (luaChon2) {
                             case 1:
-
+                                quanLyDanhSachSanPham.sapXepTheoGia();
+                                quanLyDanhSachSanPham.hienThiDanhSachSP();
                                 break;
                             case 2:
+                                quanLyDanhSachSanPham.sapXepTheoSoLuong();
+                                quanLyDanhSachSanPham.hienThiDanhSachSP();
                                 break;
                             case 3:
+
                                 break;
                         }
                     } while (luaChon2 != 0);
@@ -225,7 +229,7 @@ public class Main {
         System.out.println("\t2. Thêm và xóa sản phẩm");
         System.out.println("\t3. Cập nhật sản phẩm");
         System.out.println("\t4. Tìm kiếm sản phẩm");
-        System.out.println("\t5. Thống kê");
+        System.out.println("\t5. Thống kê sắp xếp");
         System.out.println("\t0. Thoát chương trình");
     }
 }

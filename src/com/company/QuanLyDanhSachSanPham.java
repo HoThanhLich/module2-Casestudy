@@ -103,7 +103,28 @@ public class QuanLyDanhSachSanPham {
         }
     }
 
-//
+    public void sapXepTheoGia() {
+        for (int i = 0; i < danhSachSP.size(); i++) {
+            for (int j = danhSachSP.size()-1; j > i ; j--) {
+                if (danhSachSP.get(j).getGiaSP() < danhSachSP.get(j - 1).getGiaSP() ) {
+                    SanPham temp = danhSachSP.get(j);
+                    danhSachSP.set(j, danhSachSP.get(j - 1));
+                    danhSachSP.set(j - 1, temp);
+                }
+            }
+        }
+    }
 
+    public void sapXepTheoSoLuong() {
+        for (int i = 0; i < danhSachSP.size(); i++) {
+            for (int j = danhSachSP.size()-1; j > i ; j--) {
+                if (danhSachSP.get(j).getSoLuongSP() < danhSachSP.get(j - 1).getSoLuongSP() ) {
+                    SanPham temp = danhSachSP.get(j);
+                    danhSachSP.set(j, danhSachSP.get(j - 1));
+                    danhSachSP.set(j - 1, temp);
+                }
+            }
+        }
+    }
 
 }
