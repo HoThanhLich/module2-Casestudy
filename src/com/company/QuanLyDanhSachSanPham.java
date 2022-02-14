@@ -1,12 +1,40 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.time.Duration;
+import java.util.*;
 
 public class QuanLyDanhSachSanPham {
-    private List<SanPham> danhSachSP = new ArrayList<>();
+    private static List<SanPham> danhSachSP = new ArrayList<>();
 
     public QuanLyDanhSachSanPham() {
+        File file = new File("danhsach.txt");
+        if (file.exists()) {
+            readFile("danhsach.txt");
+        }
+    }
+
+    public static void writeToFile(String path) {
+        try {
+            OutputStream fos = new FileOutputStream(path);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(danhSachSP);
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFile(String s) {
+        try {
+            InputStream is = new FileInputStream("danhsach.txt");
+            ObjectInputStream ois = new ObjectInputStream(is);
+            danhSachSP = (List<SanPham>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public int size() {
@@ -14,7 +42,7 @@ public class QuanLyDanhSachSanPham {
     }
 
     public void hienThiDanhSachSP() {
-        for (SanPham sanPham: danhSachSP) {
+        for (SanPham sanPham : danhSachSP) {
             System.out.println(sanPham);
         }
     }
@@ -27,7 +55,7 @@ public class QuanLyDanhSachSanPham {
         this.danhSachSP = danhSachSP;
     }
 
-    public void themSanPham (SanPham sanPham) {
+    public void themSanPham(SanPham sanPham) {
         danhSachSP.add(sanPham);
     }
 
@@ -58,7 +86,7 @@ public class QuanLyDanhSachSanPham {
     public boolean capNhatTheoMaSP(String maSP, SanPham sanPham) {
         int index = timKiemTheoMaSP(maSP);
         if (index != -1) {
-            danhSachSP.set(index,sanPham);
+            danhSachSP.set(index, sanPham);
             return true;
         } else {
             return false;
@@ -74,6 +102,8 @@ public class QuanLyDanhSachSanPham {
             return false;
         }
     }
+
+//
 
 
 }

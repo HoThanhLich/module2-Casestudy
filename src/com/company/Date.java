@@ -1,6 +1,9 @@
 package com.company;
 
-public class Date {
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+public class Date implements Serializable {
     private int ngay, thang, nam;
 
     public Date() {
@@ -42,4 +45,6 @@ public class Date {
     public String toString() {
         return ngay + "/" + thang + "/" + nam;
     }
+
+
 }
