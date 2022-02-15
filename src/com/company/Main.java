@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
+    static QuanLyDanhSachSanPham quanLyDanhSachSanPham = new QuanLyDanhSachSanPham();
 
     public static void main(String[] args) {
-        QuanLyDanhSachSanPham quanLyDanhSachSanPham = new QuanLyDanhSachSanPham();
+
 
         int choice = -1, luaChon2;
         String input;
@@ -181,11 +182,21 @@ public class Main {
         scanner.nextLine();
         System.out.print("Nhập mã SP:  ");
         String maSP = scanner.nextLine();
+//        if (quanLyDanhSachSanPham.timKiemTheoMaSP(maSP) != -1) {
+//            System.err.println("------------ĐÃ TỒN TẠI MÃ TRONG DANH SÁCH------------");
+//        } else {
+        while (quanLyDanhSachSanPham.timKiemTheoMaSP(maSP) != -1) {
+            System.out.println("------------ĐÃ TỒN TẠI MÃ TRONG DANH SÁCH------------");
+            System.out.println("Nhập Lại: ");
+            maSP = scanner.nextLine();
+        }
         while (maSP.trim().equals("")) {
-            System.out.println("Tên không hợp lệ !!!");
+            System.out.println("Mã không hợp lệ !!!");
             System.out.println("Nhập lại: ");
             maSP = scanner.nextLine();
         }
+//        }
+
         System.out.print("Nhập tên SP:  ");
         String tenSP = scanner.nextLine();
         while (tenSP.trim().equals("")) {
