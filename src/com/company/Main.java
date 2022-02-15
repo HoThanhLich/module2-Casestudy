@@ -19,7 +19,7 @@ public class Main {
                     if (quanLyDanhSachSanPham.size() == 0) {
                         System.err.println("\tChưa có SP nào !!!");
                     } else {
-                        System.out.println("\t-----------Danh sách sản phẩm-----------");
+                        System.out.println("\t\t\t-----------DANH SÁCH SẢN PHẨM-----------");
                         quanLyDanhSachSanPham.hienThiDanhSachSP();
                     }
                     break;
@@ -36,7 +36,9 @@ public class Main {
                             do {
                                 SanPham sanPham = nhapThongTinSP();
                                 quanLyDanhSachSanPham.themSanPham(sanPham);
-                                System.out.println("\tĐã nhập thành công\n");
+                                System.out.println("--------------NHẬP THÀNH CÔNG--------------");
+                                System.out.println(sanPham);
+                                System.out.println("-----------------------------------------");
                                 System.out.println("1. Tiếp tục");
                                 System.out.println("0. Quay lại");
                                 luaChon2 = scanner.nextInt();
@@ -52,10 +54,12 @@ public class Main {
                                     scanner.nextLine();
                                     System.out.print("Nhập mã SP: ");
                                     String maSP = scanner.nextLine();
+
                                     if (quanLyDanhSachSanPham.xoatheoMaSP(maSP)) {
-                                        System.out.println("\t Xóa thành công!!!");
+                                        System.out.println("--------------XÓA THÀNH CÔNG!!!--------------");
+                                        System.out.println(quanLyDanhSachSanPham.maMuonXoa);
                                     } else {
-                                        System.err.println("Thất bại - mã không tồn tại");
+                                        System.err.println("--------------THẤT BẠI-MÃ KHÔNG TỒN TẠI--------------");
                                     }
                                     System.out.println("1. Tiếp tục");
                                     System.out.println("0. Quay lại");
@@ -130,7 +134,7 @@ public class Main {
                                     input = scanner.nextLine();
                                     int index = quanLyDanhSachSanPham.timKiemTheoMaSP(input);
                                     if (index == -1) {
-                                        System.err.printf("Không có mã %s trong danh sách",input);
+                                        System.err.printf("Không có mã %s trong danh sách", input);
                                     } else {
                                         System.out.println(quanLyDanhSachSanPham.getDanhSachSP().get(index));
                                     }
@@ -141,11 +145,7 @@ public class Main {
                     break;
                 case 5:
                     do {
-                        System.out.println("---Cách thực hiện---");
-                        System.out.println("1. Theo Giá");
-                        System.out.println("2. Theo số lượng");
-                        System.out.println("3. Theo HSD");
-                        System.out.println("0. Quay lại");
+                        menuSapXep();
                         luaChon2 = scanner.nextInt();
                         switch (luaChon2) {
                             case 1:
@@ -166,6 +166,14 @@ public class Main {
             }
             quanLyDanhSachSanPham.writeToFile("danhsach.txt");
         } while (choice != 0);
+    }
+
+    private static void menuSapXep() {
+        System.out.println("---Cách thực hiện---");
+        System.out.println("1. Theo Giá");
+        System.out.println("2. Theo số lượng");
+        System.out.println("3. Theo HSD");
+        System.out.println("0. Quay lại");
     }
 
 

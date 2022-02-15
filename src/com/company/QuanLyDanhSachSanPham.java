@@ -6,7 +6,7 @@ import java.util.*;
 
 public class QuanLyDanhSachSanPham {
     private static List<SanPham> danhSachSP = new ArrayList<>();
-
+    public String maMuonXoa;
     public QuanLyDanhSachSanPham() {
         File file = new File("danhsach.txt");
         if (file.exists()) {
@@ -96,6 +96,7 @@ public class QuanLyDanhSachSanPham {
     public boolean xoatheoMaSP(String maSP) {
         int index = timKiemTheoMaSP(maSP);
         if (index != -1) {
+            maMuonXoa = danhSachSP.get(index).toString();
             danhSachSP.remove(index);
             return true;
         } else {

@@ -1,8 +1,6 @@
 package com.company;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.Period;
 
 public class SanPham implements Serializable {
     private String maSP;
@@ -67,10 +65,11 @@ public class SanPham implements Serializable {
         long ngayHetHan = 365*(this.hanSD.getNam()-1970) + (this.hanSD.getThang()*30+this.hanSD.getNgay());
         long ngayHienTai = (System.currentTimeMillis()/(3600*1000*24));
         long soNgayHSD = ngayHetHan - ngayHienTai;
-
-        return "Mã: "+ this.maSP + ",\tTên: "+ this.tenSP + ",\tGiá: " + this.giaSP+ ",\tSL: " + this.soLuongSP + ",\tHSD: "
-                + this.hanSD.toString() + ",\t Còn lại " + soNgayHSD + " (ngày)";
+//       return  "Mã: "+ this.maSP + ",\tTên: "+ this.tenSP + ",\tGiá: " + this.giaSP+ ",\tSL: " + this.soLuongSP + ",\tHSD: "
+//                + this.hanSD.toString() + ",\t Còn lại " + soNgayHSD + " (ngày)";
+        String st = String.format("MÃ: %-15s TÊN: %-17s SL: %-10d GIÁ: %-12.2f HSD: %-12s CÒN LẠI: %-10d(ngày)"
+                ,maSP,tenSP,soLuongSP,giaSP,hanSD.toString(),soNgayHSD);
+        return st;
     }
-
 
 }
